@@ -5,12 +5,34 @@
 
 
 
-# 1️⃣ Installing Python & Setting Up VS Code/PyCharm
-
-
-
+# 1️⃣ Installing Python & Setting Up VS Code/PyCharm ✅
 
 # 2️⃣ Python Syntax, Variables & Data Types
+
+name = "John"
+age = 45
+height = "4.5m"
+
+# String
+# Integer
+# Float
+# Boolean
+
+location = "Lagos" # String
+
+age = 45 # Integer
+
+height = 4.5 # Float
+
+isAdmin = True # Boolean
+
+[1, 2, 4]  #List
+
+{1, 2, 4} # Set
+
+(1, 2, 3) #Tuple
+
+{"name" : "Alice"}
 
 
 
