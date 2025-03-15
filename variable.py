@@ -10,10 +10,10 @@
 
 # def greetUser():
 
-name = "Alice" # String
-age = 25  #Integer
-height = 5.3   # Float
-is_student = True  # Boolean
+# name = "Alice" # String
+# age = 25  #Integer
+# height = 5.3   # Float
+# is_student = True  # Boolean
 
 # print(age)
 # print(height)
@@ -47,8 +47,8 @@ is_student = True  # Boolean
 
 
 # 5️⃣ Functions & Scope
-def greet(name): # def keyword, function name and a parameter
-    return f"Hello, {name}"  # return statement
+# def greet(name): # def keyword, function name and a parameter
+#     return f"Hello, {name}"  # return statement
 
 # Calling greet() function
 # print(greet("John Doe"))
@@ -66,9 +66,9 @@ def greet(name): # def keyword, function name and a parameter
 # print(local_var)
 # Global Scope → Outside functions
 
-global_var = "I'm a global guy men!"
-def show():
-    print(global_var)
+# global_var = "I'm a global guy men!"
+# def show():
+#     print(global_var)
 
 # print(show())
 
@@ -113,11 +113,89 @@ person = {"name": "Alice", "age": 25}
 
 
 # 8️⃣ Basic File Handling (open, read, write)
-with open("file.docx", "w") as file:
-    file.write("Hello World, Heelo World\n, Hello Worl")
+# with open("file.docx", "w") as file:
+#     file.write("Hello World, Heelo World\n, Hello Worl")
 
-with open("file.docx", "r") as file:
-    content = file.read()
-    print(content)
+# with open("file.docx", "r") as file:
+#     content = file.read()
+#     print(content)
 
 # 🛠 Project: To-Do List (CLI App)
+import os
+
+tasks = []
+
+# Load tasks from file
+def load_task():
+    global tasks
+    if os.path.exists("tasks.txt"):
+        with open("tasks.txt") as file:
+            tasks = [task.strip() for task in file.readlines()]
+
+
+# Save tasks to File
+
+def save_tasks(task):
+    with open("tasks.txt", "w") as file:
+        for  task in tasks:
+            file.write(task + "\n")
+
+def add_task(task):
+    create_task = tasks.append(task)
+    save_tasks(create_task)
+    print("Task added successfully")
+
+def list_tasks():
+    if not tasks:
+        print("No tasks available")
+    else:
+        for idx, task in enumerate(tasks, start=1):
+            print(f"{idx}. {task}")
+
+def delete_task(index):
+    try:
+        index = int(index) - 1
+        if 0 <= index < len(tasks):
+            removed = tasks.pop(index)
+            # print(f"Deleted task: {removed}")
+            save_tasks(tasks)
+            print(f"Deleted task: {removed}")
+
+        else:
+            print("Invalid task number")
+    except ValueError:
+        print("Enter a valid number")
+
+def main():
+    load_task()
+    while True:
+        print("\nTo-DO List")
+        print("1. Add task")
+        print("2. view task")
+        print("3. Delete task")
+        print("4. Exist")
+
+        choice =input("Choose an Option")
+
+        if choice == "1":
+            task = input("Enter your task: ")
+            add_task(task)
+
+        elif choice == "2":
+            list_tasks()
+
+        elif choice == "3":
+            list_tasks()
+            task_num = input("Enter task number to delete: ")
+            delete_task(task_num)
+
+        elif choice == "4":
+            print("===GoodBye===")
+            break
+        else:
+            print("Invalid choice, try again")
+
+
+if __name__ == "__main__":
+    main()
+
